@@ -27,8 +27,3 @@
      {% endfor %}
    </ul>
  </div>
-
-
-<div class="site_total_count">
-  <span class="post-count">博客全站共 <strong>{{ totalcount(site) }}</strong> 字</span>
-</div>

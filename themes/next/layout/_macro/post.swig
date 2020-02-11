@@ -264,8 +264,7 @@
               <div class="post-description">{#
                 #}{{ post.description }}{#
             #}</div>
-          {% endif %}
-
+          {% endif %} 
         </div>
       </header>
     {% endif %}

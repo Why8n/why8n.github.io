@@ -3,6 +3,8 @@ tags:
 - java
 - spring
 - springboot
+
+password: 123456
 ---
 
 前言
@@ -16,6 +18,7 @@ Spring 的核心功能是 IOC 和 AOP，大量的其他框架组件借助这两�
 Java 的一个生命力体现就在于它每每都能在某个关键时期迸发出自己的活力，无论是 PC互联网的 Spring 大家族，还是移动互联网的 Android，甚至于当前大数据时代下，Java 还是拥有一席之地···
 
 因此对于上述 Spring 开发企业级 JavaEE 出现的问题，Java 又再一次展现出勃勃生机，新的框架应运而生 - **[Spring Boot]**。
+<!-- more -->
 
 [Spring Boot] 简介
 --------------------------------

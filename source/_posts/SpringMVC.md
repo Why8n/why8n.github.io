@@ -19,6 +19,8 @@ tags:
 
 * **MVC模型**：MVC 是 Model - View - Controller 的缩写，即 模型 - 视图 - 控制器。
 
+<!-- more -->
+
 MVC模型也是一种分层模型，与 **B/S架构** 一样，其也分为了三层：
 * **模型（Model）**：对应于数据模型，该层主要负责对数据进行封装，也就是我们常说的 dao，bean。
 * **视图（View）**：用于展示模型中的数据，通常指的就是 jsp页面 或 html页面。
@@ -61,7 +63,7 @@ SpringMVC 使用
 ![](https://upload-images.jianshu.io/upload_images/2222997-29b85ff8bfdfaf63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 3. 在`pom.xml`中导入相关依赖：
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -96,7 +98,7 @@ SpringMVC 使用
 ![pages](https://upload-images.jianshu.io/upload_images/2222997-7ec1285aa41d95b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 5. 创建类`HellController`，接收客户端请求，返回`hello.jsp`页面：
-```
+```java
 @Controller
 public class HelloController {
     @RequestMapping("/hello")
@@ -106,7 +108,7 @@ public class HelloController {
 }
 ```
 6. 在`resources`目录下，创建 Spring 配置文件`applicationContext.xml`，开启注解扫描和 [SpringMVC] 注解支持，并配置一个视图解析器：
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -132,7 +134,7 @@ public class HelloController {
 </beans>
 ```
 7. 在`webapp/WEB-INF/web.xml`中，配置一个前端控制器，当前端控制器启动时，同时加载 Spring 配置文件：
-```
+```xml
 <!DOCTYPE web-app PUBLIC
         "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
@@ -219,7 +221,7 @@ public class HelloController {
 [SpringMVC] 常用注解
 ------------------------------------------
 * **[@RequestMapping]**：用于建立请求URL 和 请求处理方法 之间的对应/映射关系。
-```
+```java
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -258,7 +260,7 @@ public @interface RequestMapping {
 | String[]                         | produces | 指定可接收的媒体类型（匹配头部：Accept）         |
 
 * **[@GetMapping]**：映射方法支持 HTTP GET请求。其是` @RequestMapping(method = RequestMethod.GET)`的缩写。
-```
+```java
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -305,7 +307,7 @@ public @interface GetMapping {
 同理：[@PostMapping]，[@PutMapping]，[@DeleteMapping]，[@PatchMapping] 分别支持 Post，Put，Delete，Patch 请求。
 
 * **[@RequestBody]**：表示将请求体作为`Controller`方法的参数。[@RequestBody] 会读取请求体内容，然后通过系统默认配置的`HttpMessageConverter`进行解析，并将解析结果绑定到`Controller`方法参数上。
-```
+```java
 @Target({ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -316,7 +318,7 @@ public @interface RequestBody {
 **注**：Get 方法不适用该注解。
 
 示例：
-```
+```java
 @PostMapping("/requestBody")
 public String requestBody(@RequestBody String body) {
     return body;
@@ -324,7 +326,7 @@ public String requestBody(@RequestBody String body) {
 ```
 
 * **[@ResponseBody]**：表示方法返回值作为响应体内容。即将`Controller`方法返回的对象，通过适当的`HttpMessageConverter`转换为指定格式后，写入到`Response`对象的响应体中。
-```
+```java
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -332,7 +334,7 @@ public @interface ResponseBody {
 }
 ```
 * **[@RestController]**：该注解是一个组合注解，相当于 [@Controller] 和 [@ResponseBody] 的组合。当使用该注解时，方法上的 [@RequestMapping] 注解默认会带上 [@ResponseBody] 的语义。
-```
+```java
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -347,7 +349,7 @@ public @interface RestController {
 ```
 
 * **[@RequestParam]**：用于把请求携带的参数赋值给控制器方法参数。
-```
+```java
 @Target({ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -372,7 +374,7 @@ public @interface RequestParam {
 | String            | defaultValue | 默认值。当请求参数未提供或为空时，使用该默认值。 |
 | boolean           | required     | 请求参数是否必须提供此参数                             |
 示例：
-```
+```java
 @GetMapping("/requestParam")
 public String requestParam(@RequestParam("name") String username) {
     return username;

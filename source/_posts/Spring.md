@@ -18,6 +18,7 @@ tags:
 --------------------------
 ![Spring Framework Runtime](https://upload-images.jianshu.io/upload_images/2222997-c57fa2d581efc4bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+<!-- more -->
 Spring框架是一个分层架构，从总体来看，Spring 分为3层，最底层是核心层，包括 IOC、AOP 等核心模块，中间层是封装的 JavaEE 服务、作为中间的驱动组件，最上层是各个应用。
 
 组成 Spring框架的每个模块（或组件）都可以单独存在，或者与其他一个或多个模块联合实现。每个模块的功能如下：
