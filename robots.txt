@@ -1,0 +1,23 @@
+User-agent: * Allow: /
+Allow: /archives/
+Disallow: /vendors/
+Disallow: /categories/
+
+Sitemap: http://www../sitemap.xml
+Sitemap: http://www../baidusitemap.xml
+
+
+# hexo robots.txt
+User-agent: *
+Allow: /
+Allow: /archives/
+
+Disallow: /vendors/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+
+Sitemap: http://www..com/sitemap.xml
+Sitemap: http://www..com/baidusitemap.xml
